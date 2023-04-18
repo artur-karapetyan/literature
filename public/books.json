@@ -1,119 +1,149 @@
 [
     {
+      "id": 1,
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
+      "image": "/covers/aram_patchyan.png",
       "description": "The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it. ",
       "price": 12.99,
       "rating": 4.5,
       "categories": ["Fiction", "Classics"]
     },
     {
+        "id": 2,
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
+      "image": "/covers/aram_patchyan.png",
       "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
       "price": 9.99,
       "rating": 4.3,
       "categories": ["Fiction", "Classics"]
     },
     {
+        "id": 3,
       "title": "1984",
       "author": "George Orwell",
+      "image": "/covers/aram_patchyan.png",
       "description": "A dystopian novel set in a totalitarian society where citizens are constantly monitored and controlled by the government.",
       "price": 8.99,
       "rating": 4.6,
       "categories": ["Fiction", "Dystopia"]
     },
     {
+        "id": 4,
         "title": "1984",
         "author": "George Orwell",
+        "image": "/covers/aram_patchyan.png",
         "description": "A dystopian novel set in a totalitarian society where citizens are constantly monitored and controlled by the government.",
         "price": 8.99,
         "rating": 4.6,
         "categories": ["Fiction", "Dystopia"]
       },
       {
+        "id": 5,
         "title": "1984",
         "author": "George Orwell",
+        "image": "/covers/aram_patchyan.png",
         "description": "A dystopian novel set in a totalitarian society where citizens are constantly monitored and controlled by the government.",
         "price": 8.99,
         "rating": 4.6,
         "categories": ["Fiction", "Dystopia"]
       },
       {
+        "id": 6,
         "title": "1984",
         "author": "George Orwell",
+        "image": "/covers/aram_patchyan.png",
         "description": "A dystopian novel set in a totalitarian society where citizens are constantly monitored and controlled by the government.",
         "price": 8.99,
         "rating": 4.6,
         "categories": ["Fiction", "Dystopia"]
       },
       {
+        "id": 7,
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
+        "image": "/covers/aram_patchyan.png",
         "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
         "price": 9.99,
         "rating": 4.3,
         "categories": ["Fiction", "Classics"]
       },
       {
+        "id": 8,
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
+        "image": "/covers/aram_patchyan.png",
         "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
         "price": 9.99,
         "rating": 4.3,
         "categories": ["Fiction", "Classics"]
       },
       {
+        "id": 9,
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
+        "image": "/covers/aram_patchyan.png",
         "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
         "price": 9.99,
         "rating": 4.3,
         "categories": ["Fiction", "Classics"]
       },
       {
+        "id": 10,
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
+        "image": "/covers/aram_patchyan.png",
         "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
         "price": 9.99,
         "rating": 4.3,
         "categories": ["Fiction", "Classics"]
       },
       {
+        "id": 11,
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
+        "image": "/covers/aram_patchyan.png",
         "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
         "price": 9.99,
         "rating": 4.3,
         "categories": ["Fiction", "Classics"]
       },
       {
+        "id": 12,
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
+        "image": "/covers/puch_popok.png",
         "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
         "price": 9.99,
         "rating": 4.3,
         "categories": ["Fiction", "Classics"]
       },
       {
+        "id": 13,
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
+        "image": "/covers/ed_gisher.png",
         "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
         "price": 9.99,
         "rating": 4.3,
         "categories": ["Fiction", "Classics"]
       },
       {
+        "id": 14,
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
+        "image": "/covers/puch_popok.png",
         "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
         "price": 9.99,
         "rating": 4.3,
         "categories": ["Fiction", "Classics"]
       },
       {
+        "id": 15,
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
+        "image": "/covers/ed_gisher.png",
         "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
         "price": 9.99,
         "rating": 4.3,
