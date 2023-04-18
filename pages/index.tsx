@@ -21,6 +21,13 @@ interface Author {
 export default function Books() {
   const [books, setBooks] = useState<Book[]>([]);
   const [authors, setAuthors] = useState<Author[]>([]);
+  const [showHeader, setShowHeader] = useState(true);
+  const prevScrollY = useRef(0);
+  const opacity = showHeader ? 0.8 : 0.5;
+  const translateY = showHeader ? "0" : "-90px";
+  const transition = showHeader
+    ? "opacity 0.1s ease, transform 0.5s ease"
+    : "opacity 0.1s ease 0.5s, transform 0.5s ease 0.5s";
 
   useEffect(() => {
     const getBooks = async () => {
@@ -42,9 +49,6 @@ export default function Books() {
     getAuthors();
   }, []);
 
-  const [showHeader, setShowHeader] = useState(true);
-  const prevScrollY = useRef(0);
-
   useEffect(() => {
     function handleScroll() {
       const currentScrollY = window.scrollY;
@@ -58,12 +62,6 @@ export default function Books() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [showHeader]);
-
-  const opacity = showHeader ? 0.8 : 0.5;
-  const translateY = showHeader ? "0" : "-90px";
-  const transition = showHeader
-    ? "opacity 0.1s ease, transform 0.5s ease"
-    : "opacity 0.1s ease 0.5s, transform 0.5s ease 0.5s";
 
   return (
     <>
@@ -89,7 +87,7 @@ export default function Books() {
           </p>
         </div>
         <div className="flex flex-wrap w-full justify-start items-start pt-32 ml-10 md:px-16">
-          <p className="items-center text-4xl font-bold">Գրողներ</p>
+          <p className="items-center text-4xl font-bold">Հեղինակներ</p>
         </div>
         <div className="flex flex-row w-full overflow-hidden overflow-x-scroll hide-scrollbar gap-5 p-10">
           {authors.map((author) => (
@@ -105,7 +103,18 @@ export default function Books() {
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap w-full justify-start items-start ml-10 md:px-16">
+        <div className="flex flex-wrap flex-col max-w-full justify-center items-center gap-6 p-12 border-2 border-[#c0c9ee] rounded-2xl bg-white md:px-16 dark:bg-gray-800 md:ml-96 md:max-w-8xl">
+          <p className="items-center text-center text-2xl font-bold md:text-4xl">
+            Կարդացել Ե՞ս Բոլոր Պատմվածքները
+          </p>
+          <p className="items-center text-xl text-center text-[#415362] font-bold dark:text-[#d8dde2] md:text-2xl">
+            Ստուգիր Գիտելիքներդ Խաղի Միջոցով
+          </p>
+          <button className="flex-grow-0 flex-shrink-0 w-[200px] h-20 text-xl font-medium text-center rounded-md border-2 border-[#c0c9ee] bg-[#fef6eb] text-[#7ba5c7] hover:bg-[#ffe4bd] duration-200 dark:hover:bg-gray-700 dark:bg-gray-900 dark:shadow-orange-300">
+            Խաղալ Հիմա
+          </button>
+        </div>
+        <div className="flex flex-wrap w-full justify-start items-start ml-10 pt-16 md:px-16">
           <p className="items-center text-4xl font-bold">Պատմվածքներ</p>
         </div>
         <div className="flex flex-wrap justify-center items-center w-full min-h-screen gap-2.5 p-10 bg-[#f6f5f5] dark:bg-gray-500">
