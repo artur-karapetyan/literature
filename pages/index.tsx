@@ -53,7 +53,7 @@ export default function Books() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className="flex flex-col justify-center over items-start w-full min-h-screen gap-2.5 p-10 bg-[#f6f5f5] dark:bg-gray-500">
-        <div className="flex flex-wrap w-full justify-start items-start px-16">
+        <div className="flex flex-wrap w-full justify-start items-start md:px-16">
           <p className="items-center text-4xl font-bold">Գրողներ</p>
         </div>
         <div className="flex flex-row w-full overflow-hidden overflow-x-scroll hide-scrollbar gap-5 p-10">
@@ -70,7 +70,7 @@ export default function Books() {
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap w-full justify-start items-start px-16">
+        <div className="flex flex-wrap w-full justify-start items-start md:px-16">
           <p className="items-center text-4xl font-bold">Պատմվածքներ</p>
         </div>
         <div className="flex flex-wrap justify-center items-center w-full min-h-screen gap-2.5 p-10 bg-[#f6f5f5]">
