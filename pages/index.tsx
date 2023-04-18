@@ -10,8 +10,17 @@ interface Book {
   rating: number;
 }
 
+interface Author {
+  id: number;
+  image: string;
+  name: string;
+  bio: string;
+  books: string;
+}
+
 export default function Books() {
   const [books, setBooks] = useState<Book[]>([]);
+  const [authors, setAuthors] = useState<Author[]>([]);
 
   useEffect(() => {
     const getBooks = async () => {
@@ -21,6 +30,16 @@ export default function Books() {
     };
 
     getBooks();
+  }, []);
+
+  useEffect(() => {
+    const getAuthors = async () => {
+      const res = await fetch("/authors.json");
+      const data = await res.json();
+      setAuthors(data);
+    };
+
+    getAuthors();
   }, []);
 
   return (
@@ -33,17 +52,44 @@ export default function Books() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className="flex flex-wrap justify-center items-center w-full min-h-screen gap-2.5 p-10 bg-[#f6f5f5]">
-        {books.map((book) => (
-          <div
-            className="book-card flex flex-col justify-start items-center w-full max-w-xs p-4 my-4 bg-white rounded-md shadow-lg hover:scale-110 hover:bg-[#fef6eb] dark:hover:bg-gray-700 dark:bg-gray-900 dark:shadow-orange-600 duration-500"
-            key={book.id}
-          >
-            <img src={book.image} alt={book.title} />
-            <p className="text-lg font-bold">{book.title}</p>
-            <p className="text-sm font-medium text-gray-500">{book.author}</p>
-          </div>
-        ))}
+      <div className="flex flex-col justify-center over items-start w-full min-h-screen gap-2.5 p-10 bg-[#f6f5f5] dark:bg-gray-500">
+        <div className="flex flex-wrap w-full justify-start items-start px-16">
+          <p className="items-center text-4xl font-bold">Գրողներ</p>
+        </div>
+        <div className="flex flex-row w-full overflow-hidden overflow-x-scroll hide-scrollbar gap-5 p-10">
+          {authors.map((author) => (
+            <div
+              className="author-card flex flex-col justify-start items-center w-[250px] h-[400px] max-w-xs max-h-full gap-5 p-4 my-4 bg-[#fff6e6] rounded-xl shadow-lg shadow-[#91897e] hover:scale-110 hover:bg-[#ffe4bd] dark:hover:bg-gray-700 dark:bg-gray-900 dark:shadow-orange-300 duration-500 flex-shrink-0"
+              key={author.id}
+            >
+              <img src={author.image} alt={author.name} />
+              <p className="text-lg font-bold">{author.name}</p>
+              <p className="text-sm font-medium text-gray-500">
+                {author.books}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-wrap w-full justify-start items-start px-16">
+          <p className="items-center text-4xl font-bold">Պատմվածքներ</p>
+        </div>
+        <div className="flex flex-wrap justify-center items-center w-full min-h-screen gap-2.5 p-10 bg-[#f6f5f5]">
+          {books.map((book) => (
+            <div
+              className="book-card flex flex-col justify-start items-center w-full max-w-xs p-4 my-4 bg-white rounded-md shadow-lg hover:scale-110 hover:bg-[#fef6eb] dark:hover:bg-gray-700 dark:bg-gray-900 dark:shadow-orange-300 duration-500"
+              key={book.id}
+            >
+              <img src={book.image} alt={book.title} />
+              <p className="text-lg font-bold">{book.title}</p>
+              <p className="text-sm font-medium text-gray-500">{book.author}</p>
+            </div>
+          ))}
+        </div>
+        <style jsx>{`
+          .book-card {
+            height: 400px; /* Set the height to 400px */
+          }
+        `}</style>
       </div>
       <footer className="bg-gray-800 py-8">
         <div className="container mx-auto px-4">
@@ -53,11 +99,6 @@ export default function Books() {
           </p>
         </div>
       </footer>
-      <style jsx>{`
-        .book-card {
-          height: 400px; /* Set the height to 400px */
-        }
-      `}</style>
     </>
   );
 }
