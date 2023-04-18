@@ -32,10 +32,10 @@ export default function Books() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className="flex flex-row justify-start items-center w-full h-full gap-10 px-[150px] pt-[100px] pb-[50px] bg-[#f6f5f5]">
-        <div className="flex flex-wrap justify-start items-start flex-grow-0 flex-shrink-0 w-full h-full overflow-hidden gap-2.5">
+        <div className="flex flex-wrap justify-start items-start flex-grow-0 flex-shrink-0 w-full h-full overflow-hidden pt-[30px] pb-[40px] px-[20px] gap-2.5">
           {books.map((book) => (
             <div
-              className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-[285px] h-[390px] overflow-hidden gap-2.5 p-2.5 border border-[#f4c785]"
+              className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-[285px] h-[390px] overflow-hidden gap-2.5 p-2.5 border border-[#f4c785] cursor-pointer shadow-lg hover:scale-110 hover:bg-[#fef6eb] dark:hover:bg-gray-700 dark:bg-gray-900 dark:shadow-orange-600 duration-500"
               key={book.title}
             >
               <p>{book.title}</p>
@@ -47,7 +47,8 @@ export default function Books() {
       <footer className="bg-gray-800 py-8">
         <div className="container mx-auto px-4">
           <p className="text-center text-gray-400">
-            © 2023 My Book Website. All rights reserved.
+            © 2023 Armenian Language and Literature Final Project. All rights
+            reserved.
           </p>
         </div>
       </footer>
