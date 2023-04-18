@@ -59,7 +59,7 @@ export default function Books() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [showHeader]);
 
-  const opacity = showHeader ? 1 : 0.5;
+  const opacity = showHeader ? 0.8 : 0.5;
   const translateY = showHeader ? "0" : "-90px";
   const transition = showHeader
     ? "opacity 0.1s ease, transform 0.5s ease"
@@ -77,7 +77,7 @@ export default function Books() {
       </Head>
       <div className="flex flex-col justify-center over items-start w-full min-h-screen gap-2.5 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
         <div
-          className="flex justify-center items-center w-full h-[90px] border-b border-[#e8e6f0] bg-white fixed top-0 left-0 z-50 md:max-w-full shadow-sm transition-all duration-300 ease-in-out"
+          className="flex justify-center items-center w-full h-[90px] opacity-80 border-b border-[#e8e6f0] bg-white fixed top-0 left-0 z-50 md:max-w-full shadow-sm transition-all duration-300 ease-in-out dark:bg-gray-600"
           style={{
             transform: `translateY(${translateY})`,
             opacity,
