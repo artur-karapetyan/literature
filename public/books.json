@@ -1,0 +1,51 @@
+[
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "description": "The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it. ",
+      "price": 12.99,
+      "rating": 4.5,
+      "categories": ["Fiction", "Classics"]
+    },
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
+      "price": 9.99,
+      "rating": 4.3,
+      "categories": ["Fiction", "Classics"]
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "description": "A dystopian novel set in a totalitarian society where citizens are constantly monitored and controlled by the government.",
+      "price": 8.99,
+      "rating": 4.6,
+      "categories": ["Fiction", "Dystopia"]
+    },
+    {
+        "title": "1984",
+        "author": "George Orwell",
+        "description": "A dystopian novel set in a totalitarian society where citizens are constantly monitored and controlled by the government.",
+        "price": 8.99,
+        "rating": 4.6,
+        "categories": ["Fiction", "Dystopia"]
+      },
+      {
+        "title": "1984",
+        "author": "George Orwell",
+        "description": "A dystopian novel set in a totalitarian society where citizens are constantly monitored and controlled by the government.",
+        "price": 8.99,
+        "rating": 4.6,
+        "categories": ["Fiction", "Dystopia"]
+      },
+      {
+        "title": "1984",
+        "author": "George Orwell",
+        "description": "A dystopian novel set in a totalitarian society where citizens are constantly monitored and controlled by the government.",
+        "price": 8.99,
+        "rating": 4.6,
+        "categories": ["Fiction", "Dystopia"]
+      }
+  ]
+  
