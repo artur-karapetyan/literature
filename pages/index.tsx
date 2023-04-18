@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface Book {
   id: number;
@@ -42,6 +42,29 @@ export default function Books() {
     getAuthors();
   }, []);
 
+  const [showHeader, setShowHeader] = useState(true);
+  const prevScrollY = useRef(0);
+
+  useEffect(() => {
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      if (prevScrollY.current < currentScrollY && showHeader) {
+        setShowHeader(false);
+      } else if (prevScrollY.current > currentScrollY && !showHeader) {
+        setShowHeader(true);
+      }
+      prevScrollY.current = currentScrollY;
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [showHeader]);
+
+  const opacity = showHeader ? 1 : 0.5;
+  const translateY = showHeader ? "0" : "-90px";
+  const transition = showHeader
+    ? "opacity 0.1s ease, transform 0.5s ease"
+    : "opacity 0.1s ease 0.5s, transform 0.5s ease 0.5s";
+
   return (
     <>
       <Head>
@@ -53,7 +76,19 @@ export default function Books() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className="flex flex-col justify-center over items-start w-full min-h-screen gap-2.5 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
-        <div className="flex flex-wrap w-full justify-start items-start pt-10 ml-10 md:px-16">
+        <div
+          className="flex justify-center items-center w-full h-[90px] border-b border-[#e8e6f0] bg-white fixed top-0 left-0 z-50 md:max-w-full shadow-sm transition-all duration-300 ease-in-out"
+          style={{
+            transform: `translateY(${translateY})`,
+            opacity,
+            transition,
+          }}
+        >
+          <p className="flex w-full justify-center text-center items-center text-4xl font-bold font-serif">
+            Ժամանակակից Գրականություն
+          </p>
+        </div>
+        <div className="flex flex-wrap w-full justify-start items-start pt-32 ml-10 md:px-16">
           <p className="items-center text-4xl font-bold">Գրողներ</p>
         </div>
         <div className="flex flex-row w-full overflow-hidden overflow-x-scroll hide-scrollbar gap-5 p-10">
