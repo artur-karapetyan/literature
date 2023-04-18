@@ -52,28 +52,28 @@ export default function Books() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className="flex flex-col justify-center over items-start w-full min-h-screen gap-2.5 p-10 bg-[#f6f5f5] dark:bg-gray-500">
-        <div className="flex flex-wrap w-full justify-start items-start md:px-16">
+      <div className="flex flex-col justify-center over items-start w-full min-h-screen gap-2.5 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
+        <div className="flex flex-wrap w-full justify-start items-start pt-10 ml-10 md:px-16">
           <p className="items-center text-4xl font-bold">Գրողներ</p>
         </div>
         <div className="flex flex-row w-full overflow-hidden overflow-x-scroll hide-scrollbar gap-5 p-10">
           {authors.map((author) => (
             <div
-              className="author-card flex flex-col justify-start items-center w-[250px] h-[400px] max-w-xs max-h-full gap-5 p-4 my-4 bg-[#fff6e6] rounded-xl shadow-lg shadow-[#91897e] hover:scale-110 hover:bg-[#ffe4bd] dark:hover:bg-gray-700 dark:bg-gray-900 dark:shadow-orange-300 duration-500 flex-shrink-0"
+              className="author-card flex flex-col justify-start items-center w-[250px] h-[400px] max-w-xs max-h-full gap-5 p-4 my-4 bg-opacity-60 bg-[#fff6e6] rounded-3xl shadow-lg shadow-[#91897e] hover:scale-110 hover:bg-[#ffe4bd] dark:hover:bg-gray-700 dark:bg-gray-800 dark:shadow-orange-200 duration-500 flex-shrink-0"
               key={author.id}
             >
               <img src={author.image} alt={author.name} />
-              <p className="text-lg font-bold">{author.name}</p>
+              <p className="text-lg italic font-bold">{author.name}</p>
               <p className="text-sm font-medium text-gray-500">
                 {author.books}
               </p>
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap w-full justify-start items-start md:px-16">
+        <div className="flex flex-wrap w-full justify-start items-start ml-10 md:px-16">
           <p className="items-center text-4xl font-bold">Պատմվածքներ</p>
         </div>
-        <div className="flex flex-wrap justify-center items-center w-full min-h-screen gap-2.5 p-10 bg-[#f6f5f5]">
+        <div className="flex flex-wrap justify-center items-center w-full min-h-screen gap-2.5 p-10 bg-[#f6f5f5] dark:bg-gray-500">
           {books.map((book) => (
             <div
               className="book-card flex flex-col justify-start items-center w-full max-w-xs p-4 my-4 bg-white rounded-md shadow-lg hover:scale-110 hover:bg-[#fef6eb] dark:hover:bg-gray-700 dark:bg-gray-900 dark:shadow-orange-300 duration-500"
