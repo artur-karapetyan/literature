@@ -48,7 +48,11 @@ export default function Book() {
   }, [book, showHeader]);
 
   if (!book) {
-    return <div>Book not found</div>;
+    return (
+      <div className="justify-center items-center bg-white dark:bg-gray-800">
+        Loading...
+      </div>
+    );
   }
 
   return (
