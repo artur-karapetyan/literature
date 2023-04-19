@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect, useRef } from "react";
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 interface Book {
   id: number;
@@ -76,7 +77,7 @@ export default function Books() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className="flex flex-col justify-center items-start w-full min-h-screen gap-2.5 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
+      <div className="flex flex-col justify-center items-center w-full min-h-screen gap-2.5 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
         <div
           className="flex justify-center items-center w-full h-[50px] md:h-[90px] opacity-80 border-b border-[#e8e6f0] bg-white fixed top-0 left-0 z-50 md:max-w-full shadow-sm transition-all duration-300 ease-in-out dark:bg-gray-600"
           style={{
@@ -162,7 +163,7 @@ export default function Books() {
             </div>
           </div>
         )}
-        <div className="flex flex-wrap flex-col max-w-full justify-center items-center gap-6 p-12 border-2 border-[#c0c9ee] rounded-2xl bg-white md:px-16 dark:bg-gray-800 md:ml-96 md:max-w-8xl">
+        <div className="flex flex-wrap flex-col max-w-full justify-center items-center gap-6 p-12 border-2 border-[#c0c9ee] rounded-2xl bg-white md:px-16 dark:bg-gray-800 md:max-w-8xl">
           <p className="items-center text-center text-2xl font-bold md:text-4xl">
             Կարդացել Ե՞ս Բոլոր Պատմվածքները
           </p>
@@ -194,12 +195,43 @@ export default function Books() {
           }
         `}</style>
       </div>
-      <footer className="bg-gray-800 py-8">
-        <div className="container mx-auto px-4">
-          <p className="text-center text-gray-400">
-            © 2023 Armenian Language and Literature Final Project. All rights
-            reserved.
-          </p>
+      <footer className="flex flex-col bg-gray-800 py-8 px-10 gap-4">
+        <div className="flex flex-row flex-wrap md:flex-nowrap w-full">
+          <div className="flex flex-row flex-shrink-0 text-gray-400 gap-2">
+            <p className="text-left font-semibold text-gray-400">Created by:</p>
+            <p className="text-left font-medium text-gray-400">
+              Artur Karapetyan
+            </p>
+          </div>
+          <div className="w-full">
+            <p className="text-left md:text-right text-gray-400">
+              © 2023 Armenian Language and Literature Final Project. All rights
+              reserved.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-row justify-start gap-4">
+          <a
+            href="https://www.instagram.com/_arthur_karapetian_"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram size={24} color="white" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/arturkarapetian/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin size={24} color="white" />
+          </a>
+          <a
+            href="https://github.com/artur-karapetyan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub size={24} color="white" />
+          </a>
         </div>
       </footer>
     </>
