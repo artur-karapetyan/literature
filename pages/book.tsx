@@ -49,7 +49,7 @@ export default function Book() {
 
   if (!book) {
     return (
-      <div className="justify-center items-center bg-white dark:bg-gray-800">
+      <div className="justify-center items-center min-w-full min-h-full bg-white dark:bg-gray-800">
         Loading...
       </div>
     );
