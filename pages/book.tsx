@@ -85,7 +85,7 @@ export default function Book() {
         </div>
         <div className="h-full w-auto justify-start items-start p-14 md:px-20 bg-white dark:bg-gray-800">
           <h1 className="text-md md:text-xl font-bold pb-8">
-            {book.title} / {book.author}
+            {book.title} | {book.author}
           </h1>
           {book.story.map((story, index) => (
             <div className="text-xs md:text-lg" key={index}>

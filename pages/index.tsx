@@ -16,7 +16,7 @@ interface Author {
   name: string;
   profession: string;
   short_info: string;
-  bio: string;
+  bio: string[];
   books: string;
 }
 
@@ -63,6 +63,8 @@ export default function Books() {
       if (prevScrollY.current < currentScrollY && showHeader) {
         setShowHeader(false);
       } else if (prevScrollY.current > currentScrollY && !showHeader) {
+        setShowHeader(true);
+      } else if (currentScrollY === 0) {
         setShowHeader(true);
       }
       prevScrollY.current = currentScrollY;
@@ -129,7 +131,7 @@ export default function Books() {
         </div>
         {author && (
           <div className="fixed z-50 top-0 left-0 w-full h-full flex justify-center items-center bg-white/40 backdrop-blur-sm">
-            <div className="flex flex-col justify-start items-start bg-white pb-8 px-8 gap-8 rounded-lg shadow-lg w-full max-w-xs h-[80vh] md:max-w-4xl md:h-[90vh]">
+            <div className="flex flex-col justify-start items-start bg-white pb-8 px-8 gap-8 rounded-lg shadow-lg w-full max-w-xs h-[80vh] md:max-w-4xl md:h-[90vh] dark:bg-gray-700">
               <div className="flex w-full h-16 pt-6 items-end overflow-hidden">
                 <button
                   className="text-gray-500 hover:text-gray-700 ml-auto"
@@ -162,7 +164,12 @@ export default function Books() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <h2 className="text-2xl font-semibold">Կենսագրություն</h2>
-                  <p className="my-4">{author.bio}</p>
+                  {author.bio.map((bio, index) => (
+                    <div className="my-4" key={index}>
+                      {bio}
+                      <br />
+                    </div>
+                  ))}
                   <h2 className="text-2xl font-semibold">Պատմվածքներ</h2>
                   <p className="my-4">{author.books}</p>
                 </div>
