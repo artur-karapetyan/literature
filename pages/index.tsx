@@ -108,7 +108,7 @@ export default function Books() {
         <div className="flex flex-wrap w-full justify-start items-start pt-12 ml-10 md:px-16">
           <p className="items-center text-4xl font-bold">Հեղինակներ</p>
         </div>
-        <div className="flex flex-row w-full overflow-hidden overflow-x-scroll hide-scrollbar gap-5 p-10">
+        <div className="flex flex-row w-full cursor-pointer overflow-hidden overflow-x-scroll hide-scrollbar gap-5 p-10">
           {authors.map((author) => (
             <div
               className="author-card flex flex-col justify-start items-center w-[250px] h-[400px] max-w-xs max-h-full gap-5 p-4 my-4 bg-opacity-60 bg-[#fff6e6] rounded-3xl shadow-lg shadow-[#91897e] hover:scale-110 hover:bg-[#ffe4bd] dark:hover:bg-gray-700 dark:bg-gray-800 dark:shadow-orange-200 duration-500 flex-shrink-0"
@@ -120,7 +120,7 @@ export default function Books() {
               <img
                 src={author.image}
                 alt={author.name}
-                className="rounded-lg"
+                className="rounded-lg max-h-[250px]"
               />
               <p className="text-lg italic font-bold">{author.name}</p>
               <p className="text-sm font-medium text-gray-500">

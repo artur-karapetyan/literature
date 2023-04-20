@@ -40,6 +40,8 @@ export default function Book() {
         setShowHeader(false);
       } else if (prevScrollY.current > currentScrollY && !showHeader) {
         setShowHeader(true);
+      } else if (currentScrollY === 0) {
+        setShowHeader(true);
       }
       prevScrollY.current = currentScrollY;
     }
