@@ -11,13 +11,30 @@ interface Question {
   answer: string;
 }
 
+const TIMER_DURATION = 30; // duration of timer in seconds
+
 export default function Game() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [answeredQuestions, setAnsweredQuestions] = useState<Question[]>([]);
   const [score, setScore] = useState<number>(0);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [gameOver, setGameOver] = useState<boolean>(false);
+  const [timeLeft, setTimeLeft] = useState<number>(TIMER_DURATION); // time left for current question
+  const [shuffledChoices, setShuffledChoices] = useState<string[]>([]);
   const router = useRouter();
+
+  useEffect(() => {
+    if (timeLeft === 0) {
+      setGameOver(true);
+    }
+  }, [timeLeft]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime) => prevTime - 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [timeLeft]);
 
   useEffect(() => {
     const getQuestions = async () => {
@@ -44,9 +61,11 @@ export default function Game() {
     }
   };
 
-  const shuffledChoices = currentQuestion
-    ? shuffle([...currentQuestion.choices])
-    : [];
+  useEffect(() => {
+    if (currentQuestion) {
+      setShuffledChoices(shuffle([...currentQuestion.choices]));
+    }
+  }, [currentQuestion]);
 
   const handleAnswer = (answer: string) => {
     if (answer === currentQuestion?.answer) {
@@ -55,6 +74,7 @@ export default function Game() {
         ...prevQuestions,
         currentQuestion,
       ]);
+      setTimeLeft(TIMER_DURATION);
       getNextQuestion();
     } else {
       setGameOver(true);
@@ -75,7 +95,7 @@ export default function Game() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className="flex flex-col justify-center items-center w-full min-h-screen md:p-28 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
+      <div className="flex flex-col justify-center items-center w-full min-h-screen md:px-28 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
         <div className="flex justify-center items-center w-full h-[50px] md:h-[90px] opacity-80 border-b border-[#e8e6f0] bg-white fixed top-0 left-0 z-50 md:max-w-full shadow-sm dark:bg-gray-600">
           <p
             className="flex w-full cursor-pointer justify-center text-center items-center text-lg md:text-4xl font-bold font-serif"
@@ -100,34 +120,65 @@ export default function Game() {
             </div>
           </>
         ) : currentQuestion ? (
-          <div className="flex flex-col justify-center items-center w-full gap-3 md:gap-40 p-10">
-            <div>
-              <h2 className="text-3xl font-bold mb-4 pt-4">
-                {currentQuestion.question}
-              </h2>
+          <>
+            <div className="flex justify-center items-center w-full pt-14 md:pb-14">
+              <svg
+                width={54}
+                height={54}
+                viewBox="0 0 54 54"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="flex-grow-0 flex-shrink-0 w-[54px] h-[54px] md:w-[90px] md:h-[90px]"
+                preserveAspectRatio="none"
+              >
+                <circle
+                  cx="27.5"
+                  cy="26.5"
+                  r="22.5"
+                  fill="#803efc"
+                  strokeWidth={2}
+                />
+                <text
+                  x="50%"
+                  y="50%"
+                  dy=".3em"
+                  fill="#fff"
+                  fontSize="20px"
+                  textAnchor="middle"
+                >
+                  {timeLeft}
+                </text>
+              </svg>
             </div>
-            <div className="w-full items-center justify-center">
-              <ul className="flex flex-row flex-wrap items-center justify-center w-full gap-1">
-                {shuffledChoices.map((choice, index) => (
-                  <button
-                    key={choice}
-                    className={`items-start justify-center text-white md:text-start text-3xl rounded p-4 mb-2 shadow-inner cursor-pointer w-[55vh] h-[10vh] ${
-                      index % 4 === 0
-                        ? "bg-[#e33f3f] hover:bg-[#b20404]"
-                        : index % 4 === 1
-                        ? "bg-[#327dfe] hover:bg-[#164eae]"
-                        : index % 4 === 2
-                        ? "bg-[#d4ad00] hover:bg-[#a18300]"
-                        : "bg-[#308c12] hover:bg-[#22690a]"
-                    }`}
-                    onClick={() => handleAnswer(choice)}
-                  >
-                    {choice}
-                  </button>
-                ))}
-              </ul>
+            <div className="flex flex-col justify-center items-center w-full gap-3 md:gap-40 pb-10 px-10">
+              <div>
+                <h2 className="text-3xl font-bold mb-4 pt-4">
+                  {currentQuestion.question}
+                </h2>
+              </div>
+              <div className="w-full items-center justify-center">
+                <ul className="flex flex-row flex-wrap items-center justify-center w-full gap-1">
+                  {shuffledChoices.map((choice, index) => (
+                    <button
+                      key={choice}
+                      className={`items-start justify-center text-white md:text-start text-3xl rounded p-4 mb-2 shadow-inner cursor-pointer w-[55vh] h-[10vh] ${
+                        index % 4 === 0
+                          ? "bg-[#e33f3f] hover:bg-[#b20404]"
+                          : index % 4 === 1
+                          ? "bg-[#327dfe] hover:bg-[#164eae]"
+                          : index % 4 === 2
+                          ? "bg-[#d4ad00] hover:bg-[#a18300]"
+                          : "bg-[#308c12] hover:bg-[#22690a]"
+                      }`}
+                      onClick={() => handleAnswer(choice)}
+                    >
+                      {choice}
+                    </button>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+          </>
         ) : (
           <>
             <div className="items-center justify-center text-center">
