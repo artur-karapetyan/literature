@@ -100,7 +100,7 @@ export default function Game() {
             </div>
           </>
         ) : currentQuestion ? (
-          <div className="flex flex-col justify-center items-center w-full gap-40 p-10">
+          <div className="flex flex-col justify-center items-center w-full gap-8 md:gap-40 p-10">
             <div>
               <h2 className="text-3xl font-bold mb-4">
                 {currentQuestion.question}
