@@ -184,7 +184,10 @@ export default function Books() {
           <p className="items-center text-xl text-center text-[#415362] font-bold dark:text-[#d8dde2] md:text-2xl">
             Ստուգիր Գիտելիքներդ Խաղի Միջոցով
           </p>
-          <button className="flex-grow-0 flex-shrink-0 w-[200px] h-20 text-xl font-medium text-center rounded-md border-2 border-[#c0c9ee] bg-[#fef6eb] text-[#7ba5c7] hover:bg-[#ffe4bd] duration-200 dark:hover:bg-gray-700 dark:bg-gray-900 dark:shadow-orange-300">
+          <button
+            className="flex-grow-0 flex-shrink-0 w-[200px] h-20 text-xl font-medium text-center rounded-md border-2 border-[#c0c9ee] bg-[#fef6eb] text-[#7ba5c7] hover:bg-[#ffe4bd] duration-200 dark:hover:bg-gray-700 dark:bg-gray-900 dark:shadow-orange-300"
+            onClick={() => router.push("/game")}
+          >
             Խաղալ Հիմա
           </button>
         </div>
