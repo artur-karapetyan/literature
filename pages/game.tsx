@@ -21,6 +21,7 @@ export default function Game() {
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [timeLeft, setTimeLeft] = useState<number>(TIMER_DURATION); // time left for current question
   const [shuffledChoices, setShuffledChoices] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true); // loading state
   const router = useRouter();
 
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function Game() {
       const res = await fetch("/questions.json");
       const data = await res.json();
       setQuestions(data);
+      setLoading(false); // set loading to false when data is received
     };
 
     getQuestions();
@@ -85,6 +87,16 @@ export default function Game() {
     getNextQuestion();
   }, [answeredQuestions, questions]);
 
+  if (loading) {
+    return (
+      <div className="justify-center items-center min-w-full min-h-screen bg-white dark:bg-gray-800">
+        <p className="text-2xl font-bold items-center text-center">
+          Loading...
+        </p>
+      </div>
+    );
+  }
+
   return (
     <>
       <Head>
@@ -95,7 +107,7 @@ export default function Game() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className="flex flex-col justify-center items-center w-full min-h-screen md:px-28 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
+      <div className="flex flex-col justify-center items-center w-full min-h-screen md:px-36 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
         <div className="flex justify-center items-center w-full h-[50px] md:h-[90px] opacity-80 border-b border-[#e8e6f0] bg-white fixed top-0 left-0 z-50 md:max-w-full shadow-sm dark:bg-gray-600">
           <p
             className="flex w-full cursor-pointer justify-center text-center items-center text-lg md:text-4xl font-bold font-serif"
@@ -121,7 +133,7 @@ export default function Game() {
           </>
         ) : currentQuestion ? (
           <>
-            <div className="flex justify-center items-center w-full pt-14 md:pb-14">
+            <div className="flex justify-center items-center w-full pt-20 md:pb-14">
               <svg
                 width={54}
                 height={54}
@@ -150,7 +162,7 @@ export default function Game() {
                 </text>
               </svg>
             </div>
-            <div className="flex flex-col justify-center items-center w-full gap-3 md:gap-40 pb-10 px-10">
+            <div className="flex flex-col justify-center items-center text-center w-full gap-3 md:gap-40 pb-10 px-10">
               <div>
                 <h2 className="text-3xl font-bold mb-4 pt-4">
                   {currentQuestion.question}
