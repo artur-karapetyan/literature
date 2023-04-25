@@ -77,8 +77,10 @@ export default function Game() {
 
   useEffect(() => {
     if (timeLeft === 0 && startGame) {
-      addScoreToFirestore(username, score);
-      getTopScoresFromFirestore();
+      if (username !== "") {
+        addScoreToFirestore(username, score);
+        getTopScoresFromFirestore();
+      }
       setGameOver(true);
     }
   }, [timeLeft, startGame]);
@@ -137,8 +139,10 @@ export default function Game() {
       setTimeLeft(TIMER_DURATION);
       getNextQuestion();
     } else {
-      addScoreToFirestore(username, score);
-      getTopScoresFromFirestore();
+      if (username !== "") {
+        addScoreToFirestore(username, score);
+        getTopScoresFromFirestore();
+      }
       setGameOver(true);
     }
   };
