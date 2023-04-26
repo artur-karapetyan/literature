@@ -3,6 +3,7 @@ import { shuffle } from "lodash";
 import Head from "next/head";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { useRouter } from "next/router";
+import { logger } from "@/utils/logger";
 import { firestore } from "../firebase";
 import {
   collection,
@@ -51,9 +52,9 @@ export default function Game() {
         username,
         score,
       });
-      console.log("Score added with ID: ", docRef.id);
+      logger.log("Score added with ID: ", docRef.id);
     } catch (e) {
-      console.error("Error adding score: ", e);
+      logger.error("Error adding score: ", e);
     }
   };
 
@@ -72,7 +73,7 @@ export default function Game() {
       }));
       setTopScores(scores);
     } catch (e) {
-      console.error("Error getting top scores: ", e);
+      logger.error("Error getting top scores: ", e);
     }
   };
 
