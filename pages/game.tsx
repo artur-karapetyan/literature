@@ -41,6 +41,7 @@ export default function Game() {
   const [username, setUsername] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [startGame, setStartGame] = useState<boolean>(false);
+  const [gameRunning, setGameRunning] = useState<boolean>(false);
   const [topScores, setTopScores] = useState<Score[]>([]);
   const router = useRouter();
 
@@ -76,7 +77,7 @@ export default function Game() {
   };
 
   useEffect(() => {
-    if (timeLeft === 0 && startGame) {
+    if (timeLeft === 0 && startGame && gameRunning) {
       if (username !== "") {
         addScoreToFirestore(username, score);
         getTopScoresFromFirestore();
@@ -119,6 +120,7 @@ export default function Game() {
         getTopScoresFromFirestore();
         setUsername("");
       }
+      setGameRunning(false);
       setCurrentQuestion(null);
     }
   };
@@ -143,6 +145,7 @@ export default function Game() {
         addScoreToFirestore(username, score);
         getTopScoresFromFirestore();
       }
+      setGameRunning(false);
       setGameOver(true);
     }
   };
@@ -389,6 +392,7 @@ export default function Game() {
               onClick={() => {
                 if (username) {
                   setTimeLeft(TIMER_DURATION);
+                  setGameRunning(true);
                   setStartGame(true);
                 } else {
                   setError("Խնդրում ենք լրացնել այս դաշտը");
