@@ -367,7 +367,7 @@ export default function Game() {
           />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        <div className="flex flex-col justify-center items-center w-full min-h-screen md:px-36 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
+        <div className="flex flex-col justify-center items-center gap-6 w-full min-h-screen md:px-36 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
           <div className="flex justify-center items-center w-full h-[50px] md:h-[90px] opacity-80 border-b border-[#e8e6f0] bg-white fixed top-0 left-0 z-50 md:max-w-full shadow-sm dark:bg-gray-600">
             <p
               className="flex w-full cursor-pointer justify-center text-center items-center text-lg md:text-4xl font-bold font-serif"
@@ -403,6 +403,12 @@ export default function Game() {
               Խաղալ
             </button>
           </div>
+          <button
+            className="text-white bg-[#314bf5] hover:bg-indigo-700 duration-100 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#3193f5] dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
+            onClick={() => router.push("/game/leaderboard")}
+          >
+            Լավագույն Տասնյակ
+          </button>
         </div>
         <footer className="flex flex-col bg-gray-800 py-8 px-10 gap-4">
           <div className="flex flex-row flex-wrap md:flex-nowrap w-full">
