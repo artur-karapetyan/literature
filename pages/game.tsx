@@ -242,7 +242,19 @@ export default function Game() {
       <>
         <Header />
         <div className="flex flex-col justify-center items-center gap-6 w-full min-h-screen md:px-36 md:max-w-full overflow-hidden bg-[#f6f5f5] dark:bg-gray-500">
-          <div className="flex flex-col text-left items-center gap-6">
+          <form
+            className="flex flex-col text-left items-center gap-6"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (username) {
+                setTimeLeft(TIMER_DURATION);
+                setGameRunning(true);
+                setStartGame(true);
+              } else {
+                setError("Խնդրում ենք լրացնել այս դաշտը");
+              }
+            }}
+          >
             <div className="flex flex-col gap-2">
               <input
                 onChange={(e) => setUsername(e.target.value)}
@@ -256,19 +268,11 @@ export default function Game() {
             </div>
             <button
               className="text-white bg-[#314bf5] hover:bg-indigo-700 duration-100 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#3193f5] dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
-              onClick={() => {
-                if (username) {
-                  setTimeLeft(TIMER_DURATION);
-                  setGameRunning(true);
-                  setStartGame(true);
-                } else {
-                  setError("Խնդրում ենք լրացնել այս դաշտը");
-                }
-              }}
+              type="submit"
             >
               Խաղալ
             </button>
-          </div>
+          </form>
           <button
             className="text-white bg-[#314bf5] hover:bg-indigo-700 duration-100 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#3193f5] dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
             onClick={() => router.push("/game/leaderboard")}

@@ -54,24 +54,6 @@ export default function GetFirestore() {
 
   return (
     <>
-      {/* <table className="w-full mt-10 shadow-xl">
-        <thead className="border-b h-10 bg-gray-300 dark:bg-gray-700">
-          <tr>
-            <th className="border-b h-10">Տեղ</th>
-            <th className="border-b h-10">Անուն</th>
-            <th className="border-b h-10">Միավոր</th>
-          </tr>
-        </thead>
-        <tbody>
-          {topScores.map((score, index) => (
-            <tr key={score.id}>
-              <td className="border-b h-10 font-bold">{index + 1}</td>
-              <td className="border-b h-10">{score.username}</td>
-              <td className="border-b h-10">{score.score}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
       <div className="flex justify-start items-center w-[90vw] md:max-w-md h-9 mt-4 mb-4 rounded-lg shadow-xl bg-[#0c4089]">
         <p className="text-base font-extrabold text-center pl-4 text-white">
           Տեղ
