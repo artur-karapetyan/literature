@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { shuffle } from "lodash";
 import { useRouter } from "next/router";
 import { logger } from "@/utils/logger";
@@ -13,12 +13,6 @@ interface Question {
   question: string;
   choices: string[];
   answer: string;
-}
-
-interface Score {
-  id: string;
-  score: number;
-  username: string;
 }
 
 const TIMER_DURATION = 30; // duration of timer in seconds
